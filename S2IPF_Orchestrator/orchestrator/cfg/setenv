@@ -1,0 +1,113 @@
+#!/bin/bash
+
+echo "*** Running setenv.config:"
+echo "- Exporting necessary variables"
+
+# Resetting CURRENT_HOME to current
+CURRENT_HOME=$PWD
+echo "CURRENT_HOME $CURRENT_HOME"
+
+#--------------------------------------------------------------------------------------
+# ProjectName current development tree info
+#--------------------------------------------------------------------------------------
+# Required environment variables configuration information details
+#
+# IDPORCH_HOME      -  Defines the root directory.
+#
+# IDPORCH_BIN_DIR  -  Defines the binary files directory.
+#
+# IDPORCH_LOG_DIR  -  Defines the log files directory.
+#
+# IDPORCH_TEMP_DIR  -  Defines the temporal files directory.
+#
+# IDPORCH_CONFIG_DIR  -  Defines the configuration files directory.
+#
+# IDPORCH_PROCESSING_DIR    -   Defines where the output of the processing will be stored
+#
+# IDPORCH_TDS_L0NC_DIR    -   Defines the TDS of Level-0 non consolidate is stored
+#
+# IDPORCH_TDS_L0C_DIR    -   Defines the TDS of Level-0 consolidate is stored
+#
+# IDPORCH_TDS_L1A_DIR    -   Defines the TDS of Level-1A is stored
+#
+# IDPORCH_TDS_L1B_DIR    -   Defines the TDS of Level-1B is stored
+#
+# IDPORCH_TDS_L1AB_RAWEXAMPLES_DIR    -
+#
+# IDPORCH_GIPP_DIR    -   Defines where the GIPP files are stored
+#
+# IDPORCH_AUX_DIR    -   Defines where the AUX files are stored
+#
+# IDPSC_EXE_DIR    -   Defines the path of the IDP-SC executables
+#------------------------------------------------------------------------------------------
+
+export IDPORCH_HOME=$CURRENT_HOME
+echo "IDPORCH_HOME $IDPORCH_HOME"
+
+export IDPORCH_BIN_DIR=$IDPORCH_HOME/bin
+echo "IDPORCH_BIN_DIR $IDPORCH_BIN_DIR"
+
+export IDPORCH_LOG_DIR=/data2/local_test_environment/logs
+echo "IDPORCH_LOG_DIR $IDPORCH_LOG_DIR"
+
+export IDPORCH_TEMP_DIR=$IDPORCH_HOME/tmp
+echo "IDPORCH_TEMP_DIR $IDPORCH_TEMP_DIR"
+
+export IDPORCH_CONFIG_DIR=/data/TDS_v1_3/CONFIG
+echo "IDPORCH_CONFIG_DIR $IDPORCH_CONFIG_DIR"
+
+export IDPORCH_TASKTABLE_DIR=$IDPORCH_HOME/tasktables
+echo "IDPORCH_TASKTABLE_DIR $IDPORCH_TASKTABLE_DIR"
+
+export IDPORCH_PROCESSING_DIR=/data2/local_test_environment
+echo "IDPORCH_PROCESSING_DIR $IDPORCH_PROCESSING_DIR"
+
+#export IDPORCH_TDS_L0NC_DIR=/data2/TDS_29thMay2013/000000025_L0uAnnotatedPDI_Reduced_corrected
+export IDPORCH_TDS_L0NC_DIR=/data2/TDS/Delivery_2013-04-16/Delivery_10avril2013/Livraison_CS_CFI6_V10.1.0/000000001_L0uAnnotatedPDI_corrected
+echo "IDPORCH_TDS_L0NC_DIR $IDPORCH_TDS_L0NC_DIR"
+
+#export IDPORCH_TDS_L0C_DIR=/data2/TDS_29thMay2013/000000025_L0cAnnotatedPDI_Reduced_corrected
+export IDPORCH_TDS_L0C_DIR=/data2/TDS/Delivery_2013-04-16/Delivery_10avril2013/Livraison_CS_CFI6_V10.1.0/000000001_L0cAnnotatedPDI_corrected
+echo "IDPORCH_TDS_L0C_DIR $IDPORCH_TDS_L0C_DIR"
+
+export IDPORCH_TDS_L1A_DIR=/data/TDS_v0_1/SYN_5/L1a
+echo "IDPORCH_TDS_L1A_DIR $IDPORCH_TDS_L1A_DIR"
+
+export IDPORCH_TDS_L1B_DIR=/data/TDS_v0_1/SYN_5/L1b
+echo "IDPORCH_TDS_L1B_DIR $IDPORCH_TDS_L1B_DIR"
+
+export IDPORCH_TDS_L1AB_RAWEXAMPLES_DIR=/data/TDS_v0_1/L1abRawExamples
+echo "IDPORCH_TDS_L1AB_RAWEXAMPLES_DIR $IDPORCH_TDS_L1AB_RAWEXAMPLES_DIR"
+
+export IDPORCH_GIPP_DIR=/data/TDS_v1_3/GIPP
+echo "IDPORCH_GIPP_DIR $IDPORCH_GIPP_DIR"
+
+export IDPORCH_AUX_DIR=/data/TDS_v1_3/AUX_FILES
+echo "IDPORCH_AUX_DIR $IDPORCH_AUX_DIR"
+
+export IDPORCH_IDPSC_INPUT_DIR=/data2/IDPSC_input
+echo "IDPORCH_IDPSC_INPUT_DIR $IDPORCH_IDPSC_INPUT_DIR"
+
+export IDPSC_EXE_DIR=/home/s2ipftest/InstallationDir/s2ipf
+echo "IDPSC_EXE_DIR $IDPSC_EXE_DIR"
+
+export XERCES_DIR=/opt/cots/xerces311
+
+export GPC_DIR=/opt/cots/GPC
+
+export GDAL_DIR=/opt/cots/gdal
+
+# Setting path to COTS folder
+COTS=/opt/cots/
+
+export LD_LIBRARY_PATH=$XERCES_DIR/lib:$GPC_DIR/lib:$GDAL_DIR/lib:$LD_LIBRARY_PATH
+
+export ARCH=linux
+
+export PATH=$PATH:$IDPORCH_HOME/bin
+
+# Creating the executable directory
+# mkdir -p $IDPORCH_BIN_DIR/bin
+
+# Creating the obj directory
+# mkdir -p $IDPORCH_HOME/obj

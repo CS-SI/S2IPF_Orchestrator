@@ -1,0 +1,346 @@
+{
+    "PARAMETERS" : {
+        "COMMON" : [
+            ["TRACE", "false"],
+            ["VALIDATE_SCHEMA", "false"]
+            ],
+        "INIT_LOC_L0" : [
+            ["SAD_DATA_INGESTION", "true"],
+            ["IERS_DATA_INGESTION", "true"],
+            ["ANCILLARY_COMPUTATION", "true"],
+            ["GRANULE_FOOTPRINT_COMPUTATION", "true"],
+            ["PROCESSING_BASELINE", "01.01"],
+            ["PROCESSING_CENTER", "MPS_"],
+            ["CREATION_DATE", "2014-06-30T14:00:00Z"],
+            ["FAKE_MODE", "false"]
+            ],
+        "FORMAT_ISP" : [
+            ["PROCESSING_BASELINE", "01.01"],
+            ["PROCESSING_CENTER", "MPS_"],
+            ["CREATION_DATE", "2014-06-30T14:00:00Z"],
+            ["PARALLEL_ATF", "false"],
+            ["PARALLEL_GRANULE_BEGIN", "001"],
+            ["PARALLEL_GRANULE_END", "001"],
+            ["PARALLEL_ATF_BEGIN_MARGIN", "0000"],
+            ["GPS_UTC", "0"],
+            ["PARALLEL_ATF_END_MARGIN", "0000"],
+            ["PARALLEL_DETECTOR_IDENT", "01-02-03-04-05-06-07-08-09-10-11-12"],
+            ["DATABLOCK_NUMBER", "001"]
+            ],
+        "QL_GEO" : [
+            ["ON_BOARD_COMPRESSION_BYPASSED", "false"],
+            ["QL_IMAGE_GENERATION", "true"],
+            ["GRANULE_FOOTPRINT_COMPUTATION", "true"],
+            ["PARALLEL_BAND_QL", "false"],
+            ["PARALLEL_BAND_QL_IDENT", "B01-B02-B03-B10-B11"],
+            ["PARALLEL_DETECTOR", "false"],
+            ["PARALLEL_DETECTOR_IDENT", "01-02-03-04-05-06-07-08-09-10-11-12"],
+            ["PARALLEL_DATABLOCK", "true"],
+            ["DATABLOCK_NUMBER", "001"],
+            ["FAKE_MODE", "false"]
+            ],
+        "QL_CLOUD_MASK" : [
+            ["NOMINAL_SCENARIO", "true"],
+            ["REPROCESSING_SCENARIO", "false"],
+            ["PARALLEL_DATABLOCK", "true"],
+            ["DATABLOCK_NUMBER", "001"]
+            ],
+        "FORMAT_IMG_QL_L0" : [
+            ["PARALLEL_BAND_QL", "false"],
+            ["PARALLEL_BAND_QL_IDENT", "B01-B02-B03-B10-B11"]
+            ],
+        "FORMAT_METADATA_GR_L0C" : [
+            ["ARCHIVING_CENTER", "MPS_"],
+            ["PROCESSING_BASELINE", "01.01"],
+            ["PROCESSING_CENTER", "MPS_"],
+            ["FAKE_MODE", "false"],
+            ["PARALLEL_GRANULE", "false"],
+            ["PARALLEL_GRANULE_BEGIN", "001"],
+            ["PARALLEL_GRANULE_END", "001"],
+            ["PARALLEL_DETECTOR_IDENT", "01-02-03-04-05-06-07-08-09-10-11-12"]
+            ],
+        "FORMAT_METADATA_DS_L0C" : [
+            ["METADATA_PROCESSING", "true"],
+            ["ASP_FORMATTING", "true"],
+            ["ARCHIVING_CENTER", "MPS_"],
+            ["PROCESSING_BASELINE", "01.01"],
+            ["PROCESSING_CENTER", "MPS_"],
+            ["CREATION_DATE","2014-06-30T14:00:00Z"],
+            ["FAKE_MODE", "false"]
+            ],
+        "UNFORMAT_SAFE_GR" : [
+            ["ISP_SAFE_UNFORMAT", "false"],
+            ["GR_SAFE_UNFORMAT", "true"],
+            ["PARALLEL_GRANULE", "false"],
+            ["PARALLEL_GRANULE_BEGIN", "001"],
+            ["PARALLEL_GRANULE_END", "001"],
+            ["PARALLEL_DETECTOR_IDENT", "01-02-03-04-05-06-07-08-09-10-11-12"]
+            ],
+        "UNFORMAT_SAFE_DS" : [
+            ],
+        "QL_DECOMP" : [
+            ["PARALLEL_BAND","false"],
+            ["PARALLEL_BAND_IDENT","B00-B01-B02-B03-B04-B05-B06-B07-B08-B09-B10-B11-B12"]
+            ],
+        "UPDATE_LOC" : [
+            ["ATF_LENGTH","3"],
+            ["PROCESSING_BASELINE","01.01"],
+            ["PROCESSING_CENTER","MPS_"],
+            ["CREATION_DATE","2014-06-30T14:00:00Z"],
+            ["SAD_DATA_INGESTION","false"],
+            ["POD_DATA_INGESTION","false"],
+            ["DATA_MODEL_REFINING","false"],
+            ["IERS_DATA_INGESTION","false"],
+            ["ANCILLARY_COMPUTATION","true"],
+            ["GRANULE_FOOTPRINT_COMPUTATION","true"],
+            ["FAKE_MODE","false"],
+            ["COMPUTE_EXTRA_GRANULE","false"]
+            ],
+        "INIT_LOC_L1" : [
+            ["PARALLEL_DETECTOR_IDENT","01-02-03-04-05-06-07-08-09-10-11-12"],
+            ["PARALLEL_DETECTOR","false"],
+            ["DATABLOCK_NUMBER","001"],
+            ["PARALLEL_DATABLOCK","false"],
+            ["TRACE","false"],
+            ["DETECTOR_FOOTPRINT_COMPUTATION","true"],
+            ["TECHNICAL_MASKS_COMPUTATION","true"],
+            ["COARSE_CLOUD_MASK_PROJECT","true"],
+            ["GRANULE_CLOUD_COMPUTATION","true"],
+            ["FAKE_MODE","false"]
+            ],
+        "DECOMP" : [
+            ["PROCESSING_BASELINE","01.01"],
+            ["PROCESSING_CENTER","MPS_"],
+            ["CREATION_DATE","2014-06-30T14:00:00Z"],
+            ["PARALLEL_ATF_BEGIN_GRANULE","001"],
+            ["PARALLEL_ATF_END_GRANULE","001"],
+            ["PARALLEL_ATF_BEGIN_MARGIN","0000"],
+            ["PARALLEL_ATF_END_MARGIN","0000"],
+            ["PARALLEL_ATF_DETECTOR_IDENT","01"],
+            ["PARALLEL_BAND","false"],
+            ["PARALLEL_BAND_IDENT","B00-B01-B02-B03-B04-B05-B06-B07-B08-B09-B10-B11-B12"],
+            ["PARALLEL_ATF","false"],
+            ["DATABLOCK_NUMBER","001"],
+            ["PARALLEL_DATABLOCK","false"],
+            ["FAKE_MODE","false"]
+            ],
+        "RADIO_AB" : [
+            ["PARALLEL_ATF","false"],
+            ["PARALLEL_ATF_BEGIN_GRANULE","001"],
+            ["PARALLEL_ATF_END_GRANULE","001"],
+            ["PARALLEL_ATF_BEGIN_MARGIN","0000"],
+            ["PARALLEL_ATF_END_MARGIN","0000"],
+            ["PARALLEL_ATF_DETECTOR_IDENT","01"],
+            ["PARALLEL_BAND","false"],
+            ["PARALLEL_BAND_IDENT","B00-B01-B02-B03-B04-B05-B06-B07-B08-B09-B10-B11-B12"],
+            ["DATABLOCK_NUMBER","001"],
+            ["L1A_ONLY","false"],
+            ["L1A_AND_L1B","false"],
+            ["L1A_AND_L1B_NO_DEC_DEN","true"],
+            ["DECONVOLUTION_DENOISING","false"],
+            ["GRANULE_GENERATION","false"],
+            ["FAKE_MODE","false"] 
+            ],
+        "RADIO_FINALIZE" : [
+            ["ARCHIVING_CENTER","MPS_"],
+            ["PROCESSING_BASELINE","01.01"],
+            ["PROCESSING_CENTER","MPS_"],
+            ["ATF_Computation","true"]
+            ],
+        "FORMAT_IMG_L1A" : [
+            ["ATF_Computation","true"],
+            ["PARALLEL_GRANULE","false"],
+            ["PARALLEL_GRANULE_BEGIN","001"],
+            ["PARALLEL_GRANULE_END","001"],
+            ["PARALLEL_DETECTOR_IDENT","01-02-03-04-05-06-07-08-09-10-11-12"],
+            ["PARALLEL_ATF","false"],
+            ["PARALLEL_ATF_BEGIN_GRANULE","001"],
+            ["PARALLEL_ATF_END_GRANULE","001"],
+            ["PARALLEL_ATF_BEGIN_MARGIN","0000"],
+            ["PARALLEL_ATF_END_MARGIN","0000"],
+            ["DATABLOCK_NUMBER","001"],
+            ["PARALLEL_ATF_DETECTOR_IDENT","01"],
+            ["PARALLEL_BAND","false"],
+            ["PARALLEL_BAND_IDENT","B00-B01-B02-B03-B04-B05-B06-B07-B08-B09-B10-B11-B12"]
+            ],
+        "FORMAT_METADATA_GR_L1A" : [ 
+            ["PARALLEL_GRANULE","false"],
+            ["PARALLEL_GRANULE_BEGIN","001"],
+            ["PARALLEL_GRANULE_END","001"],
+            ["PARALLEL_DETECTOR_IDENT","01-02-03-04-05-06-07-08-09-10-11-12"],
+            ["ARCHIVING_CENTER","MPS_"],
+            ["PROCESSING_BASELINE","01.01"],
+            ["PROCESSING_CENTER","MPS_"],
+            ["TECHNICAL_MASKS","true"],
+            ["CLOUD_MASKS","true"],
+            ["L1A_RADIO_MASKS","true"],
+            ["FAKE_MODE","false"]
+            ],
+        "FORMAT_METADATA_DS_L1A" : [
+            ["ARCHIVING_CENTER","MPS_"],
+            ["PROCESSING_BASELINE","01.01"],
+            ["PROCESSING_CENTER","MPS_"],
+            ["FAKE_MODE","false"]
+            ],
+        "GEO1B_FINALIZE" : [
+            ["PARALLEL_DETECTOR","false"],
+            ["PARALLEL_DETECTOR_IDENT","01-02-03-04-05-06-07-08-09-10-11-12"],
+            ["PARALLEL_BAND","false"],
+            ["PARALLEL_BAND_IDENT","B00-B01-B02-B03-B04-B05-B06-B07-B08-B09-B10-B11-B12"],
+            ["FAKE_MODE","false"]
+            ],
+        "FORMAT_IMG_L1B" : [
+            ["ATF_Computation","true"],
+            ["PARALLEL_GRANULE","false"],
+            ["PARALLEL_GRANULE_BEGIN","001"],
+            ["PARALLEL_GRANULE_END","001"],
+            ["PARALLEL_DETECTOR_IDENT","01-02-03-04-05-06-07-08-09-10-11-12"],
+            ["PARALLEL_ATF","false"],
+            ["PARALLEL_ATF_BEGIN_GRANULE","001"],
+            ["PARALLEL_ATF_END_GRANULE","001"],
+            ["PARALLEL_ATF_BEGIN_MARGIN","0000"],
+            ["PARALLEL_ATF_END_MARGIN","0000"],
+            ["DATABLOCK_NUMBER","001"],
+            ["PARALLEL_ATF_DETECTOR_IDENT","01"],
+            ["PARALLEL_BAND","false"],
+            ["PARALLEL_BAND_IDENT","B00-B01-B02-B03-B04-B05-B06-B07-B08-B09-B10-B11-B12"]
+            ],
+        "FORMAT_METADATA_GR_L1B" : [ 
+            ["PARALLEL_GRANULE","false"],
+            ["PARALLEL_GRANULE_BEGIN","001"],
+            ["PARALLEL_GRANULE_END","001"],
+            ["PARALLEL_DETECTOR_IDENT","01-02-03-04-05-06-07-08-09-10-11-12"],
+            ["ARCHIVING_CENTER","MPS_"],
+            ["PROCESSING_BASELINE","01.01"],
+            ["PROCESSING_CENTER","MPS_"],
+            ["TECHNICAL_MASKS","true"],
+            ["CLOUD_MASKS","true"],
+            ["L1B_RADIO_MASKS","true"],
+            ["FAKE_MODE","false"]
+            ],
+        "FORMAT_METADATA_DS_L1B" : [
+            ["ARCHIVING_CENTER","MPS_"],
+            ["PROCESSING_BASELINE","01.01"],
+            ["PROCESSING_CENTER","MPS_"],
+            ["FAKE_MODE","false"]
+            ],      
+        "GET_TILE_LIST" : [
+            ],
+        "TILE_INIT" : [
+            ["PARALLEL_TILE","false"],
+            ["PARALLEL_TILE_IDENT","001"],
+            ["PROCESSING_BASELINE","01.01"],
+            ["CREATION_DATE","2014-06-30T14:00:00Z"],
+            ["ECMWF_L1C_TILE_GENER","true"]
+            ],
+        "GEN_ORTHO_TOA" : [
+            ["PARALLEL_BAND","false"],
+            ["PARALLEL_BAND_IDENT","B00-B01-B02-B03-B04-B05-B06-B07-B08-B09-B10-B11-B12"],
+            ["DETECTOR_MASK_GENERATION","true"],
+            ["L1B_MASK_PROJECTION","true"],
+            ["CONVERSION_TO_TOA_REFLECTANCE","true"],
+            ["FAKE_MODE","false"],
+            ["PARALLEL_TILE","false"],
+            ["PARALLEL_TILE_IDENT","001"]
+            ],
+        "TILE_FINALIZE" : [
+            ["PARALLEL_TILE","false"],
+            ["PARALLEL_TILE_IDENT","001"]
+            ],
+        "MASK_S2" : [
+            ["CLOUD_MASKS_PROCESS","true"],
+            ["LAND_WATER_MASKS_PROCESS","true"],
+            ["PARALLEL_TILE","false"],
+            ["PARALLEL_TILE_IDENT","001"]
+            ],
+        
+        "FORMAT_IMG_L1C" : [
+            ["PARALLEL_TILE","false"],
+            ["PARALLEL_TILE_IDENT","001"],
+            ["PARALLEL_BAND","false"],
+            ["PARALLEL_BAND_IDENT","B00-B01-B02-B03-B04-B05-B06-B07-B08-B09-B10-B11-B12"]
+            ],
+        "FORMAT_IMG_PVI_TCI" : [
+            ["TCI_PROCESS","true"],
+            ["PVI_PROCESS","true"],
+            ["PARALLEL_TILE","false"],
+            ["PARALLEL_TILE_IDENT","001"]
+            ],
+        "FORMAT_METADATA_DS_L1C" : [
+            ["ARCHIVING_CENTER","MPS_"],
+            ["PROCESSING_BASELINE","01.01"],
+            ["PROCESSING_CENTER","MPS_"],
+            ["FAKE_MODE","true"]
+            ],
+        "FORMAT_METADATA_TILE_L1C" : [
+            ["FAKE_MODE","true"],
+            ["PARALLEL_TILE","false"],
+            ["PARALLEL_TILE_IDENT","001"],
+            ["PROCESSING_BASELINE","01.01"],
+            ["PROCESSING_CENTER","MPS_"],
+            ["ARCHIVING_CENTER","MPS_"]
+            ]
+        },
+    "INPUT_OUTPUT_MAPPING" : {
+        "INIT_LOC_L1" : {
+            "VECTOR" : {
+                "VECTOR" : [ "QL_CLOUD_MASK" ]
+                }
+            },
+	"RADIO_FINALIZE" : {
+            "VECTOR" : {
+                "VECTOR" : ["DECOMP" , "RADIO_AB" , "INIT_LOC_L1"]
+                }
+            },
+        "DECOMP" : {
+            "PDI_GR_LIST" : {
+                "PDI_DS_GR_LIST" : ["UPDATE_LOC", "UNFORMAT_SAFE_GR"]
+                }
+            },
+        "FORMAT_METADATA_GR_L1B" : {
+            "VECTOR" : {
+                "VECTOR" : ["RADIO_FINALIZE"]
+                }
+            },
+        "QL_CLOUD_MASK" : {
+            "QUICKLOOK_CM" : {
+                "QUICKLOOK" : ["QL_DECOMP"]
+                }
+            },
+        "TILE_FINALIZE" : {
+            "PDI_DS_TILE_LIST" : {
+                "PDI_DS_TILE_LIST" : ["TILE_INIT","GEN_ORTHO_TOA"]
+                },
+            "VECTOR_DS_FOOTPRINT" : {
+                "PROC.L1B.LIST.VECTOR" : ["FORMAT_METADATA_DS_L1B"]
+                }
+            },
+        "GET_TILE_LIST" : {
+            "VECTOR_DS_FOOTPRINT" : {
+                "PROC.L1B.LIST.VECTOR" : ["FORMAT_METADATA_DS_L1B"]
+                }
+            },
+        "MASK_S2" : {
+            "PDI_DS_TILE_LIST" : {
+                "PDI_DS_TILE_LIST" : ["TILE_FINALIZE","GEN_ORTHO_TOA"]
+                }
+            },
+        "FORMAT_IMG_PVI_TCI" : {
+            "PDI_DS_TILE_LIST" : {
+                "PDI_DS_TILE_LIST" : ["MASK_S2","GEN_ORTHO_TOA"]
+                }
+            },
+        "FORMAT_IMG_L1C" : {
+            "PDI_DS_TILE_LIST" : {
+                "PDI_DS_TILE_LIST" : ["MASK_S2","GEN_ORTHO_TOA"]
+                }
+            },
+        "FORMAT_METADATA_TILE_L1C" : {
+            "PDI_DS_TILE_LIST" : {
+                "PDI_DS_TILE_LIST" : ["MASK_S2", "GEN_ORTHO_TOA","TILE_INIT"],
+                "VECTOR" : ["MASK_S2"]
+                }
+            }
+
+        }
+    }

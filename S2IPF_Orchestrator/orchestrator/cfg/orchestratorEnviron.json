@@ -1,0 +1,29 @@
+{
+    "TaskTable": {
+        "default": {
+	   "IDPORCH_LOG_DIR" : "./log"
+        },
+        "mandatory": [
+            "IDPORCH_LOG_DIR",
+            "IDPORCH_INPUT_DATASTRIP_DIR",
+            "IDPORCH_GIPP_DIR",
+            "IDPORCH_AUX_DIR",
+            "IDPSC_EXE_DIR",
+            "IDPORCH_PROCESSING_DIR"
+        ],
+        "optional": [
+            "IDPORCH_HOME",
+            "IDPORCH_TDS_L0NC_DIR",
+            "IDPORCH_BIN_DIR",
+            "IDPORCH_TEMP_DIR",
+            "IDPORCH_INPUT_GRANULES_DIR",
+            "IDPORCH_INPUT_QUICKLOOKS_DIR",
+            "IDPORCH_CONFIG_DIR",
+            "IDPORCH_TDS_L0NC_DIR",
+            "IDPORCH_TDS_L0C_DIR",
+            "IDPORCH_TDS_L1A_DIR",
+            "IDPORCH_TDS_L1B_DIR",
+            "IDPORCH_TDS_L1AB_RAWEXAMPLES_DIR"
+        ]
+    }
+}

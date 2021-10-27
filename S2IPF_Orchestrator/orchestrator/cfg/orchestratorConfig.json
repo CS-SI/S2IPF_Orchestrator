@@ -1,0 +1,21 @@
+{
+   "Sensing" :
+   [
+       "1983-01-01T00:00:00Z",
+       "2020-01-01T00:00:00Z"
+   ],
+   "Parallelization" :
+   [
+   ["BAND_QL", 1],
+   ["BAND", 1],
+   ["DETECTOR", 1],
+   ["ATF", 1, 1],
+   ["Granule", 1, 1],
+   ["Tile", 1, 1]
+   ],
+   "DATABLOCK_IDENT" : ["001"],
+   "OLQC_Instances" : 23,
+   "MAX_TASK" : 23,
+   "Stdout_Log_Level" : "INFO",
+   "Stderr_Log_Level" : "INFO"
+ }

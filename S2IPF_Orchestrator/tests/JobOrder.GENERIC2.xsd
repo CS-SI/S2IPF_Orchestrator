@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:IO_Ipf="http://gs2.esa.int/DICO/1.0/IPF/ipf/IO_Ipf.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           attributeFormDefault="unqualified" elementFormDefault="qualified">
+    <xs:import namespace="http://gs2.esa.int/DICO/1.0/IPF/ipf/IO_Ipf.xsd" schemaLocation="./IO_Ipf.xsd"/>
+    <xs:element name="Ipf_Job_Order" type="Ipf_Job_OrderType"/>
+    <xs:complexType name="Ipf_ConfType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="Processor_Name"/>
+            <xs:element type="xs:string" name="Version"/>
+            <xs:element name="Stdout_Log_Level">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="DEBUG"></xs:enumeration>
+                        <xs:enumeration value="INFO"></xs:enumeration>
+                        <xs:enumeration value="PROGRESS"></xs:enumeration>
+                        <xs:enumeration value="WARNING"></xs:enumeration>
+                        <xs:enumeration value="ERROR"></xs:enumeration>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Stderr_Log_Level">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="DEBUG"></xs:enumeration>
+                        <xs:enumeration value="INFO"></xs:enumeration>
+                        <xs:enumeration value="PROGRESS"></xs:enumeration>
+                        <xs:enumeration value="WARNING"></xs:enumeration>
+                        <xs:enumeration value="ERROR"></xs:enumeration>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element type="xs:string" name="Test"/>
+            <xs:element type="xs:string" name="Breakpoint_Enable"/>
+            <xs:element type="xs:string" name="Acquisition_Station"/>
+            <xs:element type="xs:string" name="Processing_Station"/>
+            <xs:element type="xs:string" name="Config_Files"/>
+            <xs:element type="Sensing_TimeType" name="Sensing_Time"/>
+            <xs:element type="Dynamic_Processing_ParametersType" name="Dynamic_Processing_Parameters"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Ipf_ProcType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="Task_Name"/>
+            <xs:element type="xs:string" name="Task_Version"/>
+            <xs:element type="List_of_InputsType" name="List_of_Inputs"/>
+            <xs:element type="List_of_OutputsType" name="List_of_Outputs"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Sensing_TimeType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="Start"/>
+            <xs:element type="xs:string" name="Stop"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="InputType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="File_Type"/>
+            <xs:element name="File_Name_Type">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="Directory"/>
+                        <xs:enumeration value="Physical"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element type="List_of_File_NamesType" name="List_of_File_Names"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Processing_ParameterType">
+        <xs:sequence>
+            <xs:element name="GIP_Invloc" type="IO_Ipf:Sad_Data_Ingestion"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Ipf_Job_OrderType">
+        <xs:sequence>
+            <xs:element type="Ipf_ConfType" name="Ipf_Conf"/>
+            <xs:element type="List_of_Ipf_ProcsType" name="List_of_Ipf_Procs"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="OutputType">
+        <xs:sequence>
+            <xs:element name="File_Type">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="PDI_DS"/>
+                        <xs:enumeration value="PDI_DS_GR_LIST"/>
+                        <xs:enumeration value="REPORT"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="File_Name_Type">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="Directory"/>
+                        <xs:enumeration value="Physical"/>
+                        <xs:enumeration value="Logical"/>
+                        <xs:enumeration value="Stem"/>
+                        <xs:enumeration value="Regexp"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="File_Name" type="xs:string">
+
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="mandatory" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="List_of_Ipf_ProcsType">
+        <xs:sequence>
+            <xs:element type="Ipf_ProcType" name="Ipf_Proc"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="count"/>
+    </xs:complexType>
+    <xs:complexType name="List_of_OutputsType">
+        <xs:sequence>
+            <xs:element type="OutputType" name="Output" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="count"/>
+    </xs:complexType>
+    <xs:complexType name="List_of_File_NamesType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="File_Name" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="count" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="Dynamic_Processing_ParametersType">
+        <xs:sequence>
+            <xs:element type="Processing_ParameterType" name="Processing_Parameter" maxOccurs="unbounded"
+                        minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="List_of_InputsType">
+        <xs:sequence>
+            <xs:element type="InputType" name="Input" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="count"/>
+    </xs:complexType>
+</xs:schema>

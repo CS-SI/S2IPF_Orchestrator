@@ -1,0 +1,52 @@
+# coding=utf-8
+#   _________________ .________________________
+#  /   _____/\_____  \|   \______   \_   _____/
+#  \_____  \  /  ____/|   ||     ___/|    __)
+#  /        \/       \|   ||    |    |     \
+# /_______  /\_______ \___||____|    \___  /
+#         \/         \/                  \/
+# ________                .__                     __                 __
+# \_____  \_______   ____ |  |__   ____   _______/  |_____________ _/  |_  ___________
+#  /   |   \_  __ \_/ ___\|  |  \_/ __ \ /  ___/\   __\_  __ \__  \\   __\/  _ \_  __ \
+# /    |    \  | \/\  \___|   Y  \  ___/ \___ \  |  |  |  | \// __ \|  | (  <_> )  | \/
+# \_______  /__|    \___  >___|  /\___  >____  > |__|  |__|  (____  /__|  \____/|__|
+#         \/            \/     \/     \/     \/                   \/
+#
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# author : Esquis Benjamin for CSGroup
+#
+import functools
+
+
+def condition(a_pre_condition=None, a_post_condition=None):
+    def decorator(func):
+        @functools.wraps(func)  # presever name, docstring, etc
+        def wrapper(*args, **kwargs):  # NOTE: no self
+            if a_pre_condition is not None:
+                assert a_pre_condition(*args, **kwargs)
+            retval = func(*args, **kwargs)  # call original function or method
+            if a_post_condition is not None:
+                assert a_post_condition(retval)
+            return retval
+        return wrapper
+    return decorator
+
+
+def pre_condition(check):
+    return condition(a_pre_condition=check)
+
+
+def post_condition(check):
+    return condition(a_post_condition=check)

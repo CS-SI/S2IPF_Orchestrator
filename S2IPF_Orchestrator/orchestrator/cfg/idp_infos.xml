@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<n:IDP_Infos xmlns:n="http://gs2.esa.int/DICO/1.0/IPF/ipf/File_Idp_Infos.xsd"
+             xmlns:base="http://gs2.esa.int/DICO/1.0/IPF/S2/"
+             xmlns:date_time="http://gs2.esa.int/DICO/1.0/SY/date_time/"
+             xmlns:geographical="http://gs2.esa.int/DICO/1.0/SY/geographical/" xmlns:gs2="http://gs2.esa.int/doc/1.0/"
+             xmlns:image="http://gs2.esa.int/DICO/1.0/SY/image/" xmlns:misc="http://gs2.esa.int/DICO/1.0/SY/misc/"
+             xmlns:n1="http://gs2.esa.int/DICO/1.0/IPF/base/" xmlns:n2="http://gs2.esa.int/DICO/1.0/PDGS/base/"
+             xmlns:ns1="http://gs2.esa.int/DICO/1.0/IPF/ipf/Tp_Filter.xsd"
+             xmlns:orbital="http://gs2.esa.int/DICO/1.0/SY/orbital/"
+             xmlns:pdgs_log_def="http://gs2.esa.int/DICO/1.0/PDGS/logical_definition/"
+             xmlns:platform="http://gs2.esa.int/DICO/1.0/SY/platform/"
+             xmlns:representation="http://gs2.esa.int/DICO/1.0/SY/representation/"
+             xmlns:spatio="http://gs2.esa.int/DICO/1.0/SY/spatio/" xmlns:tile="http://gs2.esa.int/DICO/1.0/SY/tile/"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://gs2.esa.int/DICO/1.0/IPF/ipf/File_Idp_Infos.xsd /data/schemas/PSD/DICO/1.0/IPF/ipf/File_Idp_Infos.xsd">
+
+    <IDPSc_Name version="01.00">FORMAT_IMG_QL_L0</IDPSc_Name>
+
+    <IDPSc_Name version="01.00">FORMAT_ISP</IDPSc_Name>
+
+    <IDPSc_Name version="01.00">FORMAT_METADATA_DS_L0C</IDPSc_Name>
+
+    <IDPSc_Name version="01.00">FORMAT_METADATA_GR_L0C</IDPSc_Name>
+
+    <IDPSc_Name version="01.00">INIT_LOC_L0</IDPSc_Name>
+
+    <IDPSc_Name version="01.00">QL_CLOUD_MASK</IDPSc_Name>
+
+    <IDPSc_Name version="01.00">QL_GEO</IDPSc_Name>
+
+</n:IDP_Infos>

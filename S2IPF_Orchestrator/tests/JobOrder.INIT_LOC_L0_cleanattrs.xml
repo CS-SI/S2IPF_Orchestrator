@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<Ipf_Job_Order>
+
+    <Ipf_Conf>
+        <Processor_Name>INIT_LOC_L0</Processor_Name>
+        <Version>01.03</Version>
+        <Stdout_Log_Level>DEBUG</Stdout_Log_Level>
+        <Stderr_Log_Level>DEBUG</Stderr_Log_Level>
+        <Test>false</Test>
+        <Breakpoint_Enable>false</Breakpoint_Enable>
+        <Acquisition_Station>CGS1</Acquisition_Station>
+        <Processing_Station>CGS1</Processing_Station>
+        <Config_Files/>
+        <Sensing_Time>
+            <Start>1983-01-01T00:00:00Z</Start>
+            <Stop>2020-01-01T00:00:00Z</Stop>
+        </Sensing_Time>
+        <Dynamic_Processing_Parameters>
+            <Processing_Parameter>
+                <Name>SAD_DATA_INGESTION</Name>
+                <Value>true</Value>
+            </Processing_Parameter>
+            <Processing_Parameter>
+                <Name>IERS_DATA_INGESTION</Name>
+                <Value>true</Value>
+            </Processing_Parameter>
+            <Processing_Parameter>
+                <Name>ANCILLARY_COMPUTATION</Name>
+                <Value>true</Value>
+            </Processing_Parameter>
+            <Processing_Parameter>
+                <Name>GRANULE_FOOTPRINT_COMPUTATION</Name>
+                <Value>true</Value>
+            </Processing_Parameter>
+            <Processing_Parameter>
+                <Name>TRACE</Name>
+                <Value>false</Value>
+            </Processing_Parameter>
+        </Dynamic_Processing_Parameters>
+    </Ipf_Conf>
+
+    <List_of_Ipf_Procs>
+        <Ipf_Proc>
+            <Task_Name>INIT_LOC_L0</Task_Name>
+            <Task_Version>01.00</Task_Version>
+            <List_of_Inputs>
+                <Input>
+                    <File_Type>PDI_DS</File_Type>
+                    <File_Name_Type>Directory</File_Name_Type>
+                    <List_of_File_Names count="1">
+                        <File_Name>
+                            /home/sharasse/validation_output/S2PDGS-TC-IPF-V1-ORCH-N-003/TASKTABLE_20140306161507_ID01/INIT_LOC_L0_52742/input/S2A_OPER_MSI_L0U_DS_CGS1_20130329T000142_S20091211T165851_N01.01
+                        </File_Name>
+                    </List_of_File_Names>
+                </Input>
+            </List_of_Inputs>
+            <List_of_Outputs>
+            </List_of_Outputs>
+        </Ipf_Proc>
+    </List_of_Ipf_Procs>
+
+</Ipf_Job_Order>

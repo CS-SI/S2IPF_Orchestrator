@@ -1,0 +1,32 @@
+{
+  "TaskTable_L0c": {
+    "default": {
+      "IDPORCH_INPUT_GRANULES_DIR": "C:/Users/Oscar/PycharmProjects/orchestrator/orchestrator/ipfdata",
+      "IDPORCH_AUX_DIR": "C:/Users/Oscar/PycharmProjects/orchestrator/orchestrator/ipfdata/auxx",
+      "IDPORCH_GIPP_DIR": "C:/Users/Oscar/PycharmProjects/orchestrator/orchestrator/ipfdata/gipp",
+      "IDPORCH_INPUT_DATASTRIP_DIR": "C:/Users/Oscar/PycharmProjects/orchestrator/orchestrator/ipfdata/S2A_OPER_MSI_L0U_DS_CGS1_20130329T000142_S20091211T165851_N01.01",
+      "IDPORCH_LOG_DIR": "C:/Users/Oscar/PycharmProjects/orchestrator/orchestrator/tmp",
+      "IDPORCH_TEMP_DIR": "C:/Users/Oscar/PycharmProjects/orchestrator/orchestrator/tmp"
+    },
+    "optional": [
+      "IDPORCH_HOME",
+      "IDPORCH_BIN_DIR",
+      "IDPORCH_CONFIG_DIR",
+      "IDPORCH_PROCESSING_DIR",
+      "IDPORCH_TDS_L0NC_DIR",
+      "IDPORCH_TDS_L0C_DIR",
+      "IDPORCH_TDS_L1A_DIR",
+      "IDPORCH_TDS_L1B_DIR",
+      "IDPORCH_TDS_L1AB_RAWEXAMPLES_DIR",
+      "IDPSC_EXE_DIR"
+    ],
+    "mandatory": [
+      "IDPORCH_LOG_DIR",
+      "IDPORCH_INPUT_DATASTRIP_DIR",
+      "IDPORCH_INPUT_GRANULES_DIR",
+      "IDPORCH_GIPP_DIR",
+      "IDPORCH_AUX_DIR",
+      "IDPORCH_TEMP_DIR"
+    ]
+  }
+}

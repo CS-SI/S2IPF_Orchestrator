@@ -1,0 +1,994 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2006 rel. 3 sp2 (http://www.altova.com) by Thales (THALES INFORMATION SYSTEMS) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:image="http://gs2.esa.int/DICO/1.0/SY/image/"
+           xmlns="http://gs2.esa.int/DICO/1.0/IPF/job"
+           targetNamespace="http://gs2.esa.int/DICO/1.0/IPF/ipf/IO_Ipf.xsd" elementFormDefault="unqualified"
+           attributeFormDefault="unqualified" version="1.0">
+    <xs:complexType name="Fake_Data">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" fixed="FAKE_DATA">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value" default="true">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="false"/>
+                        <xs:enumeration value="true"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Init loc LO -->
+    <xs:complexType name="Sad_Data_Ingestion">
+        <xs:sequence>
+            <xs:element name="Name" fixed="SAD_DATA_INGESTION">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="SAD_DATA_INGESTION"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Value" default="true">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="false"/>
+                        <xs:enumeration value="true"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Iers_Data_Ingestion">
+        <xs:sequence>
+            <xs:element name="Name" fixed="IERS_DATA_INGESTION">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="IERS_DATA_INGESTION"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Value" default="true">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="false"/>
+                        <xs:enumeration value="true"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Ancillary_Computation">
+
+        <xs:sequence>
+            <xs:element name="Name" fixed="ANCILLARY_COMPUTATION">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Value" default="true">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="false"/>
+                        <xs:enumeration value="true"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+
+    </xs:complexType>
+    <xs:complexType name="Granule_Footprint_Computation">
+        <xs:sequence>
+            <xs:element name="Name" fixed="GRANULE_FOOTPRINT_COMPUTATION">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Value" default="true">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="false"/>
+                        <xs:enumeration value="true"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+
+    </xs:complexType>
+
+    <!-- QL GEO -->
+    <xs:complexType name="Ql_Image_Generation">
+        <xs:sequence>
+            <xs:element name="Name" fixed="QL_IMAGE_GENERATION">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Value" default="false">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="false"/>
+                        <xs:enumeration value="true"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Granule_Ql_Footprint">
+        <xs:sequence>
+            <xs:element name="Name" fixed="GRANULE_FOOTPRINT_COMPUTATION">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Value" default="false">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="false"/>
+                        <xs:enumeration value="true"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Format ISP -->
+    <xs:complexType name="Nominal_Scenario">
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" fixed="NOMINAL_SCENARIO">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value" default="false">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="false"/>
+                        <xs:enumeration value="true"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Reprocessing_Scenario">
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" fixed="REPROCESSING_SCENARIO">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value" default="false">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="false"/>
+                        <xs:enumeration value="true"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Cloud Mask -->
+    <xs:complexType name="Full_Swath_Concatenation">
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" fixed="FULL_SWATH_CONCATENATION">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value" default="false">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="false"/>
+                        <xs:enumeration value="true"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Coarse_Cloud_Mask_Projection">
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" fixed="COARSE_CLOUD_MASK_PROJECT">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value" default="true">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="false"/>
+                        <xs:enumeration value="true"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- FORMAT_METADATA_DS_L0C -->
+    <xs:complexType name="Metadata_Processing">
+        <xs:sequence>
+            <xs:element name="Name" fixed="METADATA_PROCESSING">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Value" default="false">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="false"/>
+                        <xs:enumeration value="true"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Asp_Formatting">
+        <xs:sequence>
+            <xs:element name="Name" fixed="ASP_FORMATTING">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Value" default="false">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="false"/>
+                        <xs:enumeration value="true"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Others -->
+    <xs:complexType name="Parallel_Band_Ql">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" fixed="PARALLEL_BAND_QL">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value" default="false">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="false"/>
+                        <xs:enumeration value="true"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Parallel_Band_Ql_Ident">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" fixed="PARALLEL_BAND_QL_IDENT">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value">
+                <xs:annotation>
+                    <xs:documentation>B00-B02-B03-B04-B12 (5 bands separated by -: 3 at 10m, 1 at 20m and 1 at 60
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern
+                            value="(B01-|B02-|B03-|B07-){3}(B04-|B05-|B06-|B08-|B11-|B12-){1}(B00-|B09-|B10-){1}"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Parallel_Virtual_Atf">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" fixed="PARALLEL_ATF">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value" default="false">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="false"/>
+                        <xs:enumeration value="true"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Parallel_Virtual_Atf_Segment_Number">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" fixed="PARALLEL_ATF_BEGIN_GRANULE">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="\d\d\d\d"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Parallel_Atf">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" fixed="PARALLEL_ATF">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value" default="false">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="false"/>
+                        <xs:enumeration value="true"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Parallel_Atf_Begin_Granule">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" fixed="PARALLEL_ATF_BEGIN_GRANULE">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="\d\d\d"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Parallel_Atf_Begin_Margin">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" fixed="PARALLEL_ATF_BEGIN_MARGIN">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="\d\d\d\d"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Parallel_Atf_End_Granule">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" fixed="PARALLEL_ATF_END_GRANULE">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="\d\d\d"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Parallel_Atf_End_Margin">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" fixed="PARALLEL_ATF_END_MARGIN">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="\d\d\d\d"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Parallel_Atf_Detector_Ident">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" fixed="PARALLEL_ATF_DETECTOR_IDENT">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value" type="image:A_DETECTOR_NUMBER">
+                <xs:annotation>
+                    <xs:documentation>Reference on image detector</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Archiving_Center">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" fixed="ARCHIVING_CENTER">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Processing_Baseline">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" fixed="PROCESSING_BASELINE">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Processing_Center">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" fixed="PROCESSING_CENTER">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="Datablock_Number">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" fixed="DATABLOCK_NUMBER">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="\d\d\d"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Parallel_Detector">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" fixed="PARALLEL_DETECTOR">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value" default="false">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="false"/>
+                        <xs:enumeration value="true"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Parallel_Detector_Ident">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" fixed="PARALLEL_DETECTOR_IDENT">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="01-02-03-04-05-06-07-08-09-10-11-12"/>
+                        <xs:enumeration value="01-02-03-04-05-06"/>
+                        <xs:enumeration value="07-08-09-10-11-12"/>
+                        <xs:enumeration value="01-02-03-04"/>
+                        <xs:enumeration value="05-06-07-08"/>
+                        <xs:enumeration value="09-10-11-12"/>
+                        <xs:enumeration value="01-02-03"/>
+                        <xs:enumeration value="04-05-06"/>
+                        <xs:enumeration value="07-08-09"/>
+                        <xs:enumeration value="10-11-12"/>
+                        <xs:enumeration value="01-02"/>
+                        <xs:enumeration value="03-04"/>
+                        <xs:enumeration value="05-06"/>
+                        <xs:enumeration value="07-08"/>
+                        <xs:enumeration value="09-010"/>
+                        <xs:enumeration value="11-12"/>
+                        <xs:enumeration value="01"/>
+                        <xs:enumeration value="02"/>
+                        <xs:enumeration value="03"/>
+                        <xs:enumeration value="04"/>
+                        <xs:enumeration value="05"/>
+                        <xs:enumeration value="06"/>
+                        <xs:enumeration value="07"/>
+                        <xs:enumeration value="08"/>
+                        <xs:enumeration value="09"/>
+                        <xs:enumeration value="10"/>
+                        <xs:enumeration value="11"/>
+                        <xs:enumeration value="12"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Parallel_Granule">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" fixed="PARALLEL_GRANULE">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value" default="false">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="false"/>
+                        <xs:enumeration value="true"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Parallel_Granule_Begin">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" fixed="PARALLEL_GRANULE_BEGIN">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="\d\d\d"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Parallel_Granule_End">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" fixed="PARALLEL_GRANULE_BEGIN">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="\d\d\d"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Parallel_Granule_Detector_Ident">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" fixed="PARALLEL_DETECTOR_IDENT">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="01"/>
+                        <xs:enumeration value="02"/>
+                        <xs:enumeration value="03"/>
+                        <xs:enumeration value="04"/>
+                        <xs:enumeration value="05"/>
+                        <xs:enumeration value="06"/>
+                        <xs:enumeration value="07"/>
+                        <xs:enumeration value="08"/>
+                        <xs:enumeration value="09"/>
+                        <xs:enumeration value="10"/>
+                        <xs:enumeration value="11"/>
+                        <xs:enumeration value="12"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="On_Board_Compression_Bypassed">
+        <xs:sequence>
+            <xs:element name="Name" fixed="ON_BOARD_COMPRESSION_BYPASSED">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Value" default="false">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="false"/>
+                        <xs:enumeration value="true"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="List_Of_Detectors">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" fixed="LIST_OF_DETECTORS">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value">
+                <xs:annotation>
+                    <xs:documentation>List of detectors</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="((0[0-9]{1}|1[0-2]{1}){1}-)+((0[0-9]{1}|1[0-2]{1}){1}){1}"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Num_Atf">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" fixed="NUM_ATF">
+                <xs:annotation>
+                    <xs:documentation>A string defining the name of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value">
+                <xs:annotation>
+                    <xs:documentation>A string defining the value of
+                        the parameter
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="\d\d"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+
+</xs:schema>

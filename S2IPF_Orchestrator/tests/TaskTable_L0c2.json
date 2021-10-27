@@ -1,0 +1,31 @@
+{
+  "TaskTable_L0c": {
+    "default": {
+      "IDPORCH_INPUT_GRANULES_DIR": "~ipfdata/Validation_Test_Data_Set/test_data_set/NOMINAL/L0u",
+      "IDPORCH_AUX_DIR": "~sharasse/S2IPF/S2IPF-Val/s2ipf_validation/test_data_set/TDS_CONF/AUX_FILES",
+      "IDPORCH_GIPP_DIR": "/data/TDS_v1_2_CS/GIPP",
+      "IDPORCH_INPUT_DATASTRIP_DIR": "~ipfdata/Validation_Test_Data_Set/test_data_set/NOMINAL/L0u/S2A_OPER_MSI_L0U_DS_CGS1_20130329T000142_S20091211T165851_N01.01",
+      "IDPORCH_LOG_DIR": "/tmp"
+    },
+    "optional": [
+      "IDPORCH_HOME",
+      "IDPORCH_BIN_DIR",
+      "IDPORCH_TEMP_DIR",
+      "IDPORCH_CONFIG_DIR",
+      "IDPORCH_PROCESSING_DIR",
+      "IDPORCH_TDS_L0NC_DIR",
+      "IDPORCH_TDS_L0C_DIR",
+      "IDPORCH_TDS_L1A_DIR",
+      "IDPORCH_TDS_L1B_DIR",
+      "IDPORCH_TDS_L1AB_RAWEXAMPLES_DIR",
+      "IDPSC_EXE_DIR"
+    ],
+    "mandatory": [
+      "IDPORCH_LOG_DIR",
+      "IDPORCH_INPUT_DATASTRIP_DIR",
+      "IDPORCH_INPUT_GRANULES_DIR",
+      "IDPORCH_GIPP_DIR",
+      "IDPORCH_AUX_DIR"
+    ]
+  }
+}
