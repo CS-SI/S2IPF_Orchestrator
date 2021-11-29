@@ -27,6 +27,7 @@
 #
 # author : Esquis Benjamin for CSGroup
 #
+import shutil
 import traceback
 from contextlib import contextmanager
 import logging
@@ -493,6 +494,15 @@ def resolve_inputs(inputs_list, context_info, working_dir, task_name):
             known_list.add(d)
         alternatives = alternatives_unique
 
+        # Symlink or copy ?
+        do_symlink = True
+        if "Config" in context_info:
+            if "FOLDER_FUSION_STRATEGY" in context_info["Config"]:
+                if context_info["Config"]["FOLDER_FUSION_STRATEGY"] == "SYMLINK":
+                    do_symlink = True
+                elif context_info["Config"]["FOLDER_FUSION_STRATEGY"] == "COPY":
+                    do_symlink = False
+
         resolved_inputs = []
         # Multiple alternatives found for directory
         if len(alternatives) > 1 and not base_dir:
@@ -530,9 +540,15 @@ def resolve_inputs(inputs_list, context_info, working_dir, task_name):
                                 str_alternative_file, str_link_file))
                             try:
                                 if the_origin == "DB":
-                                    os.symlink(str_alternative_file, str_link_file)
+                                    if do_symlink:
+                                        os.symlink(str_alternative_file, str_link_file)
+                                    else:
+                                        shutil.copyfile(str_alternative_file, str_link_file)
                                 else:
-                                    os.symlink(str_rel_alternative_file, str_link_file)
+                                    if do_symlink:
+                                        os.symlink(str_rel_alternative_file, str_link_file)
+                                    else:
+                                        shutil.copyfile(str_alternative_file, str_link_file)
                             except OSError, e:
                                 log.debug("Folder fusion: Path exist: " + str_link_file)
                                 if not os.path.exists(str_link_file):

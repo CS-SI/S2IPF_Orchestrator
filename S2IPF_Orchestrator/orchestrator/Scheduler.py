@@ -199,20 +199,30 @@ def process_tasktable(the_task_table, the_filepath, context_file, skipped_pool, 
             os.mkdir(persistent_dir)
 
     # VIRTUAL_SENSOR special handling
-    # if ("VIRTUAL_SENSOR" in  context_info["DB"]):
-    #    virtual_dir = fully_resolve(context_info["DB"]["VIRTUAL_SENSOR"])
-    #    if not os.path.exists(virtual_dir):
-    #        os.mkdir(virtual_dir)
-    virtual_dir = base_dir + os.sep + "VIRTUAL_SENSOR"
-    context_info["DB"]["VIRTUAL_SENSOR"] = virtual_dir
+    log.info("Preparing VIRTUAL_SENSOR folder")
+    virtual_dir = os.environ["IDPORCH_PROCESSING_DIR"] + os.sep + "VIRTUAL_SENSOR"
     if not os.path.exists(virtual_dir):
         os.mkdir(virtual_dir)
+    log.info("VIRTUAL_SENSOR in "+virtual_dir)
+    context_info["DB"]["VIRTUAL_SENSOR"] = virtual_dir
     # Homolog point handling
-    #
-    # homolog_dir = base_dir+os.sep+"HOMOLOG_POINTS_LIST"
-    # context_info["DB"]["HOMOLOG_POINT_LIST"] = homolog_dir
-    # if not os.path.exists(virtual_dir):
-    #    os.mkdir(virtual_dir)
+    homolog_dir = os.environ["IDPORCH_PROCESSING_DIR"] + os.sep + "HOMOLOG_POINTS_LIST"
+    if not os.path.exists(homolog_dir):
+        os.mkdir(homolog_dir)
+    log.info("HOMOLOG_POINTS_LIST in " + homolog_dir)
+    context_info["DB"]["HOMOLOG_POINTS_LIST"] = homolog_dir
+    # Tie points
+    tie_points_dir = os.environ["IDPORCH_PROCESSING_DIR"] + os.sep + "HOMOLOG_POINTS_LIST" + os.sep + "TIE_POINTS"
+    if not os.path.exists(tie_points_dir):
+        os.mkdir(tie_points_dir)
+    log.info("TIE_POINTS in " + tie_points_dir)
+    context_info["DB"]["TIE_POINTS"] = tie_points_dir
+    # gcp points
+    gcp_points_dir = os.environ["IDPORCH_PROCESSING_DIR"] + os.sep + "HOMOLOG_POINTS_LIST" + os.sep + "GCP_POINTS"
+    if not os.path.exists(gcp_points_dir):
+        os.mkdir(gcp_points_dir)
+    log.info("GCP_POINTS in " + gcp_points_dir)
+    context_info["DB"]["GCP_POINTS"] = gcp_points_dir
 
     idp_info = IdpInfos()
     idp_infos_dirname = base_dir + os.sep + "IDP_INFOS"

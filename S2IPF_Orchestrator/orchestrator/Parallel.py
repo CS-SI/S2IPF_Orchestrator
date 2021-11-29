@@ -212,11 +212,12 @@ def split_granule(a_task_list, parallel_info, parameters, context_info, a_task_n
 
     if extract_task_name(a_task_name) == "UNFORMAT_GRI":
         gri_size = context_info["GRI_SIZE"]
-        if "PARALLEL_GRANULE_BEGIN" in parameters and "PARALLEL_GRANULE_END" in parameters:
-            log.info("Parallelization detected on PARALLEL_GRANULE_BEGIN and PARALLEL_GRANULE_END for UNFORMAT_GRI")
-            task_list_out = split_into_subtaskrange(a_task_list, "PARALLEL_GRANULE_BEGIN", "PARALLEL_GRANULE_END",
-                                                    gri_size, parallel_info[1])
-
+        if "PARALLEL_GRANULE_BEGIN" in parameters and "PARALLEL_GRANULE_END" in parameters \
+                and "MASK_AGGREGATION" in parameters and "GRI_DECOMPRESSION":
+            if parameters["GRI_DECOMPRESSION"] == "true":
+                log.info("Parallelization detected on PARALLEL_GRANULE_BEGIN and PARALLEL_GRANULE_END for UNFORMAT_GRI")
+                task_list_out = split_into_subtaskrange(a_task_list, "PARALLEL_GRANULE_BEGIN", "PARALLEL_GRANULE_END",
+                                                        gri_size, parallel_info[1])
     return task_list_out
 
 
