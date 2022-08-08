@@ -60,6 +60,7 @@ def resolve_inputs_OLQC(inputs_list, a_task_name, a_task_id, context_info, worki
     if "OLQC_Instances" in context_info["Config"] and a_task_name.startswith("OLQC_GR"):
         nb_instance = int(context_info["Config"]["OLQC_Instances"])
 
+    logging.info("Resolving OLQC inputs for task "+a_task_name+", id: "+str(a_task_id) + " / "+str(nb_instance))
     resolved_inputs_map = {}
 
     log.debug("Input length: %s" % len(inputs_list))
@@ -199,8 +200,8 @@ def resolve_inputs_OLQC(inputs_list, a_task_name, a_task_id, context_info, worki
                     datastrip_search_key = "PROC.L1C.PDI_DS"
                     tile_search_key = "PROC.L1C.PDI_DS_TILE_LIST"
                 elif a_task_name == "OLQC_DS_L0" or a_task_name == "OLQC_GR_L0":
-                    datastrip_search_key = "PROC.PDI_DS"
-                    granule_search_key = "PROC.PDI_DS_GR_LIST"
+                    datastrip_search_key = "PROC.L0C.PDI_DS"
+                    granule_search_key = "PROC.L0C.PDI_DS_GR_LIST"
                 else:
                     raise Exception("OLQC task type " + a_task_name + " not supported for PROC PDI_SAFE input")
 
@@ -231,6 +232,8 @@ def resolve_inputs_OLQC(inputs_list, a_task_name, a_task_id, context_info, worki
                                         try:
                                             os.symlink(os.path.relpath(gr_dir + os.sep + db + os.sep + gr, working_dir),
                                                        the_gr_input_dir)
+                                            if not os.path.exists(os.path.join(the_gr_input_dir,"QI_DATA")):
+                                                os.makedirs(os.path.join(the_gr_input_dir,"QI_DATA"))
                                         except OSError:
                                             if not os.path.exists(the_gr_input_dir):
                                                 log.error("Internal error with file: " + the_gr_input_dir)

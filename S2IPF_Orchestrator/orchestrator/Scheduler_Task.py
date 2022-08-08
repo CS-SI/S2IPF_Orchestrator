@@ -134,7 +134,7 @@ def get_running_parameters(the_task_table, a_task, context_info):
 
 
 # Main task launching function
-def run_task(the_task_table, a_task, a_task_id, context_info, job_queue, slot, new_env):
+def run_task(the_task_table, a_task, a_task_id, context_info, shared_context_pool, job_queue, slot, new_env):
     log = logging.getLogger("Orchestrator")
     # Global try
     try:
@@ -160,10 +160,10 @@ def run_task(the_task_table, a_task, a_task_id, context_info, job_queue, slot, n
         if a_task.Name.startswith("OLQC"):
             input_map = OLQCBind.prepare_inputs_olqc(a_task, a_task_id, context_info, task_dir)
         else:
-            input_map = prepare_inputs(a_task, context_info, task_dir)
+            input_map = prepare_inputs(a_task, context_info, shared_context_pool, task_dir)
         # prepare output dirs
-        output_map = prepare_outputs(a_task, context_info, task_dir)
-        # task_dir = prepare_execution_environment_for_task(a_Task, context_info)
+        output_map = prepare_outputs(a_task, context_info, shared_context_pool, task_dir)
+
         # Get the task running parameters
         running_parameters = get_running_parameters(the_task_table, a_task, context_info)
 
@@ -407,25 +407,6 @@ def prepare_shell_environment_for_task(a_task, context_info):
     return new_env
 
 
-# Prepare env for task launch
-def prepare_execution_environment_for_task(a_task, context_info):
-    log = logging.getLogger("Orchestrator")
-    log.info("Preparing execution environments")
-
-    crit_level = a_task.Criticality_Level
-    log.info("Critical level %s dully noted" % crit_level)
-
-    task_dir = prepare_base_directory_for_task(a_task, context_info)
-    # prepare input dirs
-    prepare_inputs(a_task, context_info, task_dir)
-    # if input style is copy, copy data
-    # else create symlinks
-    # prepare output dirs
-    prepare_outputs(a_task, context_info, task_dir)
-
-    return task_dir
-
-
 # Get a directory to work in for a task
 def prepare_base_directory_for_task(a_task, context_info):
     log = logging.getLogger("Orchestrator")
@@ -442,14 +423,15 @@ def prepare_base_directory_for_task(a_task, context_info):
 
 
 # prepare the inputs for a task
-def prepare_inputs(a_task, context_info, task_dir):
+def prepare_inputs(a_task, context_info, shared_context_pool, task_dir):
     log = logging.getLogger("Orchestrator")
     log.info("Preparing inputs for task " + a_task.Name)
 
-    if "PREVIOUS.TASK.INPUT" in context_info:
-        if context_info["PREVIOUS.TASK.INPUT"][0] == a_task.Name:
-            log.debug("Found previous input map")
-            return context_info["PREVIOUS.TASK.INPUT"][1]
+    if "PREVIOUS.TASK.INPUT" in shared_context_pool:
+        for f in shared_context_pool["PREVIOUS.TASK.INPUT"]:
+            if f[0] == a_task.Name:
+                log.debug("Found previous input map")
+                return f[1]
     working_dir = task_dir + os.sep + "input"
     try:
         os.mkdir(working_dir)
@@ -459,7 +441,10 @@ def prepare_inputs(a_task, context_info, task_dir):
 
     inputs_map = resolve_inputs(a_task.List_of_Inputs.Input, context_info, working_dir, a_task.Name)
 
-    context_info["PREVIOUS.TASK.INPUT"] = [a_task.Name, inputs_map]
+    if "PREVIOUS.TASK.INPUT" in shared_context_pool:
+        shared_context_pool["PREVIOUS.TASK.INPUT"].append([a_task.Name, inputs_map])
+    else:
+        shared_context_pool["PREVIOUS.TASK.INPUT"] = [[a_task.Name, inputs_map]]
 
     return inputs_map
 
@@ -602,13 +587,14 @@ def resolve_inputs(inputs_list, context_info, working_dir, task_name):
 
 
 # prepare the outputs for a task
-def prepare_outputs(a_task, context_info, task_dir):
+def prepare_outputs(a_task, context_info, shared_context_pool, task_dir):
     log = logging.getLogger("Orchestrator")
     log.info("Preparing outputs for task " + a_task.Name)
-    if "PREVIOUS.TASK.OUTPUT" in context_info:
-        if context_info["PREVIOUS.TASK.OUTPUT"][0] == a_task.Name:
-            log.debug("Found previous output map")
-            return context_info["PREVIOUS.TASK.OUTPUT"][1]
+    if "PREVIOUS.TASK.OUTPUT" in shared_context_pool:
+        for f in shared_context_pool["PREVIOUS.TASK.OUTPUT"]:
+            if f[0] == a_task.Name:
+                log.debug("Found previous output map")
+                return f[1]
 
     working_dir = task_dir + os.sep + "output"
     try:
@@ -618,15 +604,18 @@ def prepare_outputs(a_task, context_info, task_dir):
             log.error(e)
             raise
 
-    outputs_map = resolve_outputs(a_task.List_of_Outputs.Output, context_info, working_dir, a_task.Name)
+    outputs_map = resolve_outputs(a_task.List_of_Outputs.Output, context_info, shared_context_pool, working_dir, a_task.Name)
 
-    context_info["PREVIOUS.TASK.OUTPUT"] = [a_task.Name, outputs_map]
+    if "PREVIOUS.TASK.OUTPUT" in shared_context_pool:
+        shared_context_pool["PREVIOUS.TASK.OUTPUT"].append([a_task.Name, outputs_map])
+    else:
+        shared_context_pool["PREVIOUS.TASK.OUTPUT"] = [[a_task.Name, outputs_map]]
 
     return outputs_map
 
 
 # resolve the outputs for a task
-def resolve_outputs(outputs_list, context_info, working_dir, task_name):
+def resolve_outputs(outputs_list, context_info, shared_context_pool, working_dir, task_name):
     log = logging.getLogger("Orchestrator")
 
     resolved_outputs_map = {}
@@ -669,34 +658,44 @@ def resolve_outputs(outputs_list, context_info, working_dir, task_name):
                         log.error(e)
                         raise
                 resolved_outputs_map[the_format] = (the_output_type, resolved_outputs)
-                if "L1A" in task_name:
-                    context_info["PROC.L1A.LIST." + the_format] = context_info.setdefault("PROC.L1A.LIST." + the_format,
+                if "L0C" in task_name:
+                    shared_context_pool["PROC.L0C.LIST." + the_format] = shared_context_pool.setdefault("PROC.L0C.LIST." + the_format,
                                                                                           []) + [
                                                                       [extracted_task_name, resolved_outputs]]
-                    context_info["PROC.L1A." + the_format] = resolved_outputs
+                    shared_context_pool["PROC.L0C." + the_format] = resolved_outputs
+                    log.debug("Adding L0C %s to PROC" % str(resolved_outputs))
+                    shared_context_pool["PROC.LIST." + the_format] = shared_context_pool.setdefault("PROC.LIST." + the_format, []) + [
+                        [extracted_task_name, resolved_outputs]]
+                    shared_context_pool["PROC." + the_format] = resolved_outputs
+                    log.debug("Adding %s to PROC" % str(resolved_outputs))
+                elif "L1A" in task_name:
+                    shared_context_pool["PROC.L1A.LIST." + the_format] = shared_context_pool.setdefault("PROC.L1A.LIST." + the_format,
+                                                                                          []) + [
+                                                                      [extracted_task_name, resolved_outputs]]
+                    shared_context_pool["PROC.L1A." + the_format] = resolved_outputs
                     log.debug("Adding L1A %s to PROC" % str(resolved_outputs))
                 elif "L1B" in task_name:
-                    context_info["PROC.L1B.LIST." + the_format] = context_info.setdefault("PROC.L1B.LIST." + the_format,
+                    shared_context_pool["PROC.L1B.LIST." + the_format] = shared_context_pool.setdefault("PROC.L1B.LIST." + the_format,
                                                                                           []) + [
                                                                       [extracted_task_name, resolved_outputs]]
-                    context_info["PROC.L1B." + the_format] = resolved_outputs
+                    shared_context_pool["PROC.L1B." + the_format] = resolved_outputs
                     log.debug("Adding L1B %s to PROC" % str(resolved_outputs))
                 elif "L1C" in task_name:
-                    context_info["PROC.L1C.LIST." + the_format] = context_info.setdefault("PROC.L1C.LIST." + the_format,
+                    shared_context_pool["PROC.L1C.LIST." + the_format] = shared_context_pool.setdefault("PROC.L1C.LIST." + the_format,
                                                                                           []) + [
                                                                       [extracted_task_name, resolved_outputs]]
-                    context_info["PROC.L1C." + the_format] = resolved_outputs
+                    shared_context_pool["PROC.L1C." + the_format] = resolved_outputs
                     log.debug("Adding L1C %s to PROC" % str(resolved_outputs))
                 elif "PVI" in task_name:
-                    context_info["PROC.PVI.LIST." + the_format] = context_info.setdefault("PROC.PVI.LIST." + the_format,
+                    shared_context_pool["PROC.PVI.LIST." + the_format] = shared_context_pool.setdefault("PROC.PVI.LIST." + the_format,
                                                                                           []) + [
                                                                       [extracted_task_name, resolved_outputs]]
-                    context_info["PROC.PVI." + the_format] = resolved_outputs
+                    shared_context_pool["PROC.PVI." + the_format] = resolved_outputs
                     log.debug("Adding PVI %s to PROC" % str(resolved_outputs))
                 else:
-                    context_info["PROC.LIST." + the_format] = context_info.setdefault("PROC.LIST." + the_format, []) + [
+                    shared_context_pool["PROC.LIST." + the_format] = shared_context_pool.setdefault("PROC.LIST." + the_format, []) + [
                         [extracted_task_name, resolved_outputs]]
-                    context_info["PROC." + the_format] = resolved_outputs
+                    shared_context_pool["PROC." + the_format] = resolved_outputs
                     log.debug("Adding %s to PROC" % str(resolved_outputs))
 
             elif outputs_list[subindex].File_Name_Type == "Physical":
@@ -720,16 +719,16 @@ def resolve_outputs(outputs_list, context_info, working_dir, task_name):
                 resolved_outputs_map[the_format] = (the_output_type, resolved_outputs)
                 if "L1A" in task_name:
                     log.debug("Adding L1A %s to PROC" % str(resolved_outputs))
-                    context_info["PROC.L1A." + the_format] = resolved_outputs
+                    shared_context_pool["PROC.L1A." + the_format] = resolved_outputs
                 elif "L1B" in task_name:
                     log.debug("Adding L1B %s to PROC" % str(resolved_outputs))
-                    context_info["PROC.L1B." + the_format] = resolved_outputs
+                    shared_context_pool["PROC.L1B." + the_format] = resolved_outputs
                 elif "L1C" in task_name:
                     log.debug("Adding L1C %s to PROC" % str(resolved_outputs))
-                    context_info["PROC.L1C." + the_format] = resolved_outputs
+                    shared_context_pool["PROC.L1C." + the_format] = resolved_outputs
                 else:
                     log.debug("Adding %s to PROC" % str(resolved_outputs))
-                    context_info["PROC." + the_format] = resolved_outputs
+                    shared_context_pool["PROC." + the_format] = resolved_outputs
             else:
                 raise Exception("Unexpected output criteria...")
 

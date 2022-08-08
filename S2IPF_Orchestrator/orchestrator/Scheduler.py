@@ -406,7 +406,8 @@ def run_pool(the_task_table, the_list_of_tasks, pool_id, the_filename, context_i
     manager = Manager()
     shared_context = manager.dict()
     shared_context.update(context_info)
-
+    shared_context_pool = manager.dict()
+    shared_context_pool.update(context_info)
     # Execution statuses
     failed = False
     paused = False
@@ -449,7 +450,7 @@ def run_pool(the_task_table, the_list_of_tasks, pool_id, the_filename, context_i
                 task = task_list[task_launched + t]
                 slot = slots.pop()
                 p = Process(target=run_task, args=(
-                    the_task_table, task, task_launched + t, shared_context, child_job_queue, slot, new_env,))
+                    the_task_table, task, task_launched + t, shared_context, shared_context_pool, child_job_queue, slot, new_env,))
                 p.start()
                 log.info("Launching task " + task.Name + " under pid " + str(p.pid))
                 task_status = pool_status[task_launched + t]
@@ -539,7 +540,8 @@ def run_pool(the_task_table, the_list_of_tasks, pool_id, the_filename, context_i
     if failed:
         raise Exception("run_pool: A task has been wrong")
 
-    context_info.update(shared_context)
+    # update from pool context
+    context_info.update(shared_context_pool)
 
     # Write the current context in json format in tmp folder
     json_dict = context_info["BASE_DIR"] + os.sep + "CurrentState_" + str(pool_id) + ".json"
