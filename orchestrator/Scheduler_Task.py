@@ -465,6 +465,9 @@ def resolve_inputs(inputs_list, context_info, working_dir, task_name):
         # WORKING is dynamicaly created
         if the_format == "WORKING":
             continue
+        #multi DEM compatibility
+        if 'DEM_SRTM' in the_format:
+            the_format = "DEM_SRTM"            
 
         # input type creation
         the_input_type = InputType(the_format, the_type)
